@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "color-selector",
+      "description": "A component specializing with selecting a color",
+      "properties": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Selected color",
+          "default": "#ffffff"
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "change",
+          "description": "Dispatched when a user select a new color. Is not dispatched when programatically changing the color."
+        }
+      ],
+      "slots": [],
+      "cssProperties": [
+        {
+          "name": "--color-selector-width",
+          "description": "The width of the color preview box",
+          "type": "Length",
+          "default": "34px"
+        },
+        {
+          "name": "--color-selector-height",
+          "description": "The height of the color preview box",
+          "type": "Length",
+          "default": "24px"
+        },
+        {
+          "name": "--color-selector-border-color",
+          "description": "The border color of the color preview box",
+          "type": "Length",
+          "default": "24px"
+        }
+      ]
+    },
+    {
+      "name": "color-input-selector",
+      "description": "A component with an input that tells whether a color is enabled or not",
+      "properties": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Selected color"
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean",
+          "description": "Whether the color is enabled or not"
+        },
+        {
+          "name": "compatibility",
+          "type": "Boolean",
+          "description": "Enables compatibility with the Anypoint styles"
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "change",
+          "description": "Dispatched when a user select a new color or enabled state changed. Is not dispatched when programatically changing the color."
+        }
+      ],
+      "slots": [
+        {
+          "description": "Label rendered in line in the input."
+        }
+      ],
+      "cssProperties": []
+    }
+  ]
+}
