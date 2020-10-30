@@ -2,17 +2,18 @@ import { CSSResult, TemplateResult, LitElement } from 'lit-element';
 
 export declare const colorValue: unique symbol;
 export declare const colorTriggerHandler: unique symbol;
-export declare const inputHanlder: unique symbol;
+export declare const inputHandler: unique symbol;
 
 export declare class ColorSelectorElement extends LitElement {
-  static readonly styles: CSSResult;
+  static get styles(): CSSResult;
 
   /**
    * A color to be picked.
+   * @attribute
    */
   value: string;
 
-  readonly [colorValue]: string;
+  get [colorValue](): string;
 
   constructor();
 
@@ -25,7 +26,7 @@ export declare class ColorSelectorElement extends LitElement {
    */
   [colorTriggerHandler](): void;
 
-  [inputHanlder](e: Event): void;
+  [inputHandler](e: Event): void;
 
   render(): TemplateResult;
 }

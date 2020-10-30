@@ -10,6 +10,7 @@ import '../color-selector.js';
 export const checkedHandler = Symbol('checkedHandler');
 export const colorHandler = Symbol('colorHandler');
 export const toggleHandler = Symbol('toggleHandler');
+export const keydownHandler = Symbol('keydownHandler');
 export const notify = Symbol('notify');
 export const checkboxTemplate = Symbol('checkboxTemplate');
 export const selectorTemplate = Symbol('selectorTemplate');
@@ -30,10 +31,6 @@ export class ColorInputSelectorElement extends LitElement {
        * Whether the color is enabled or not
        */
       enabled: { type: Boolean, reflect: true },
-      /**
-       * Enables compatibility with the Anypoint styles
-       */
-      compatibility: { type: Boolean, reflect: true },
     };
   }
 
@@ -47,10 +44,6 @@ export class ColorInputSelectorElement extends LitElement {
      * @type {boolean}
      */
     this.enabled = undefined;
-    /**
-     * @type {boolean}
-     */
-    this.compatibility = undefined;
   }
 
   [notify]() {
@@ -71,6 +64,7 @@ export class ColorInputSelectorElement extends LitElement {
 
   /**
    * A handler for the color change. Updates color property value.
+   * @param {CustomEvent} e
    */
   [colorHandler](e) {
     const picker = /** @type ColorSelectorElement */ (e.target);
@@ -91,6 +85,15 @@ export class ColorInputSelectorElement extends LitElement {
     this[notify]();
   }
 
+  /**
+   * @param {KeyboardEvent} e 
+   */
+  [keydownHandler](e) {
+    if (['Enter', 'Space', 'NumEnter'].includes(e.code)) {
+      this[toggleHandler]();
+    }
+  }
+
   render() {
     return html`
     ${this[checkboxTemplate]()}
@@ -103,13 +106,12 @@ export class ColorInputSelectorElement extends LitElement {
    * @returns {TemplateResult} Template for the checkbox element
    */
   [checkboxTemplate]() {
-    const { compatibility, enabled } = this;
+    const { enabled } = this;
     return html`
     <anypoint-checkbox
       aria-label="Enable or disable this color"
       ?checked="${enabled}"
-      ?compatibility="${compatibility}"
-      aria-describedby="bgcolorlabel"
+      aria-describedby="bgColorLabel"
       @change="${this[checkedHandler]}"
     ></anypoint-checkbox>
     `;
@@ -136,8 +138,9 @@ export class ColorInputSelectorElement extends LitElement {
     return html`
     <span
       class="checkbox-label"
-      id="bgcolorlabel"
+      id="bgColorLabel"
       @click="${this[toggleHandler]}"
+      @keydown="${this[keydownHandler]}"
     ><slot></slot></span>
     `;
   }

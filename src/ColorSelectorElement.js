@@ -4,7 +4,7 @@ import elementStyles from './ColorSelectorElement.styles.js';
 
 export const colorValue = Symbol('colorValue');
 export const colorTriggerHandler = Symbol('colorTriggerHandler');
-export const inputHanlder = Symbol('inputHanlder');
+export const inputHandler = Symbol('inputHandler');
 
 export class ColorSelectorElement extends LitElement {
   static get styles() {
@@ -52,7 +52,7 @@ export class ColorSelectorElement extends LitElement {
   /**
    * @param {Event} e
    */
-  [inputHanlder](e) {
+  [inputHandler](e) {
     this.value = /** @type HTMLInputElement */ (e.target).value;
     this.dispatchEvent(new CustomEvent('change'));
   }
@@ -63,7 +63,7 @@ export class ColorSelectorElement extends LitElement {
       backgroundColor: color,
     };
     return html`
-    <input type="color" class="picker" .value="${color}" @change="${this[inputHanlder]}" aria-label="Select a color" />
+    <input type="color" class="picker" .value="${color}" @change="${this[inputHandler]}" aria-label="Select a color" />
     <div class="box" style="${styleMap(visStyles)}"></div>
     `;
   }

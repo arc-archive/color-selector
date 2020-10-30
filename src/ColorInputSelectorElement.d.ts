@@ -5,6 +5,7 @@ import '../color-selector';
 export declare const checkedHandler: unique symbol;
 export declare const colorHandler: unique symbol;
 export declare const toggleHandler: unique symbol;
+export declare const keydownHandler: unique symbol;
 export declare const notify: unique symbol;
 export declare const checkboxTemplate: unique symbol;
 export declare const selectorTemplate: unique symbol;
@@ -15,16 +16,14 @@ export class ColorInputSelectorElement extends LitElement {
 
   /**
    * A color to be picked.
+   * @attribute
    */
   value: string;
   /**
-   * Whther the color is enabled or not
+   * Whether the color is enabled or not
+   * @attribute
    */
-  enabled: string;
-  /**
-   * Enabes compatibility with the Anypoint styles
-   */
-  compatibility: string;
+  enabled: boolean;
 
   constructor();
 
@@ -41,6 +40,8 @@ export class ColorInputSelectorElement extends LitElement {
    * A handler for the label click. Toggles enabled property.
    */
   [toggleHandler](): void;
+
+  [keydownHandler](e: KeyboardEvent): void;
 
   render(): TemplateResult;
 
