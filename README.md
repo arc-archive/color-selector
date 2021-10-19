@@ -1,8 +1,8 @@
-[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/color-selector.svg)](https://www.npmjs.com/package/@advanced-rest-client/color-selector)
+# DEPRECATED
 
-[![Build Status](https://travis-ci.com/advanced-rest-client/color-selector.svg)](https://travis-ci.com/advanced-rest-client/color-selector)
+Use the `@anypoint-web-components/awc` module instead.
 
-# Color selector
+-----
 
 A component that is an input specialized with selecting a color. The package contains a `color-selector` that only renders an interactive control to select a color, and `color-input-selector` that contains additional label and enabling checkbox.
 

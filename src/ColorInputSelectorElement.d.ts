@@ -11,6 +11,9 @@ export declare const checkboxTemplate: unique symbol;
 export declare const selectorTemplate: unique symbol;
 export declare const labelTemplate: unique symbol;
 
+/**
+ * @deprecated Use the `@anypoint-web-components/awc` module instead.
+ */
 export class ColorInputSelectorElement extends LitElement {
   static readonly styles: CSSResult;
 

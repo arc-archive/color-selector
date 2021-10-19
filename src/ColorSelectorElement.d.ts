@@ -4,6 +4,9 @@ export declare const colorValue: unique symbol;
 export declare const colorTriggerHandler: unique symbol;
 export declare const inputHandler: unique symbol;
 
+/**
+ * @deprecated Use the `@anypoint-web-components/awc` module instead.
+ */
 export declare class ColorSelectorElement extends LitElement {
   static get styles(): CSSResult;
 
